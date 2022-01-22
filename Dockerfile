@@ -10,6 +10,7 @@ ENV PORT 9000
 EXPOSE ${PORT}
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+HEALTHCHECK CMD curl -f -LI http://localhost:9000 || exit 1
 CMD ["thelounge", "start"]
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
